@@ -1,0 +1,10 @@
+host = "127.0.0.1"
+port = 8080
+max_connections = 100
+request_timeout = 30
+static_dir = "public"
+max_header_size = 16384
+max_body_size = 1048576
+max_file_size = 10485760
+worker_threads = 4
+log_level = "info"
