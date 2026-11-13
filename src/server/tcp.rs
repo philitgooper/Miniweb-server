@@ -92,6 +92,8 @@ fn handle(stream: TcpStream, cfg: &Config) {
             })
             .unwrap_or(0);
         if length > cfg.max_body_size {
+            let response = connection::parse_error(crate::http::ParseError::BodyTooLarge);
+            let _ = reader.get_mut().write_all(&response.serialize(false));
             return;
         }
         let mut body = vec![0; length];

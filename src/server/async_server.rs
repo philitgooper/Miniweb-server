@@ -88,7 +88,8 @@ async fn serve(stream: TcpStream, peer: String, cfg: Config) -> std::io::Result<
         if length > cfg.max_body_size {
             writer
                 .write_all(
-                    &connection::parse_error(crate::http::ParseError::TooLarge).serialize(false),
+                    &connection::parse_error(crate::http::ParseError::BodyTooLarge)
+                        .serialize(false),
                 )
                 .await?;
             return Ok(());

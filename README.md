@@ -77,7 +77,7 @@ Static paths are percent-decoded, reject dot/parent components, reject dotfiles,
 
 ## Benchmarks
 
-Criterion microbenchmarks are available with `cargo bench --bench server_benchmark`. On the development host (WSL2, x86_64; Rust 1.99.1; optimized bench profile), a run reported parser latency of **263.42–264.16 ns** and response serialization latency of **560.06–561.66 ns** (Criterion estimate intervals, 100 samples each). The router lookup benchmark measured **150.03–150.70 ns**. These are local microbenchmarks, not end-to-end server results. No load test comparing the two server modes has been run. For a comparison, build both modes in release on the same host and use the same endpoint, concurrency, request count, and client tool (for example `oha`); record host, command, and output before publishing numbers.
+Criterion microbenchmarks are available with `cargo bench --bench server_benchmark`. On the development host (WSL2, x86_64; Rust 1.99.1; optimized bench profile), a run reported parser latency of **251.61–257.60 ns** and response serialization latency of **885.11–887.79 ns** (Criterion estimate intervals, 100 samples each). The router lookup benchmark measured **147.24–147.74 ns**. These are local microbenchmarks, not end-to-end server results. No load test comparing the two server modes has been run. For a comparison, build both modes in release on the same host and use the same endpoint, concurrency, request count, and client tool (for example `oha`); record host, command, and output before publishing numbers.
 
 ## Limitations and roadmap
 

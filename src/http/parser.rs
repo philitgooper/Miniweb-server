@@ -30,6 +30,8 @@ pub enum ParseError {
     Version,
     #[error("request too large")]
     TooLarge,
+    #[error("request body too large")]
+    BodyTooLarge,
     #[error("chunked transfer encoding is unsupported")]
     Chunked,
     #[error("incomplete request")]
@@ -92,7 +94,7 @@ pub fn parse_request(input: &[u8], limits: ParseLimits) -> Result<Request, Parse
         None => 0,
     };
     if length > limits.max_body_size {
-        return Err(ParseError::TooLarge);
+        return Err(ParseError::BodyTooLarge);
     }
     let start = end + 4;
     if input.len() < start + length {

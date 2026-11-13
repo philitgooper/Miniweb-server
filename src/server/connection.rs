@@ -59,6 +59,7 @@ fn static_response(req: &Request, cfg: &Config, path: &str) -> Response {
 pub fn parse_error(error: ParseError) -> Response {
     let status = match error {
         ParseError::TooLarge => Status::HEADER_TOO_LARGE,
+        ParseError::BodyTooLarge => Status::PAYLOAD_TOO_LARGE,
         ParseError::Chunked => Status::NOT_IMPLEMENTED,
         ParseError::Version => Status::HTTP_VERSION_NOT_SUPPORTED,
         _ => Status::BAD_REQUEST,

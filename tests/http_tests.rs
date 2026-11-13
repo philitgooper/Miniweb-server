@@ -35,7 +35,7 @@ fn maps_bad_and_oversized_requests_without_panicking() {
     };
     assert_eq!(
         parse_request(b"POST / HTTP/1.1\r\nContent-Length: 2\r\n\r\nxx", limits),
-        Err(ParseError::TooLarge)
+        Err(ParseError::BodyTooLarge)
     );
 }
 
